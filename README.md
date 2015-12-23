@@ -1,6 +1,6 @@
 ## LCCSqliteManager
 这是一个Sqlite数据库框架
-github地址:git@github.com:OldChicken/LCCSqliteManager.git
+github地址:https://github.com/OldChicken/LCCSqliteManager
 
 ## 目的
 这是一个菜鸟新手第一个封装的框架！！这是一个菜鸟新手第一个封装的框架！！这是一个菜鸟新手第一个封装的框架！！
