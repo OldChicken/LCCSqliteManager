@@ -38,9 +38,12 @@
 
     //数据库操作
     _manager = [LCCSqliteManager shareInstance];
-    [_manager openSqlite];
+    [_manager openSqliteFile:@"Person"];
+    
 
-    //读取列表
+    
+    
+//    读取列表
     _sheetListArray = [_manager getAllSheetNames];
     
     //表视图
@@ -48,7 +51,7 @@
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+
 
 }
 

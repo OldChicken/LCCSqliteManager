@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CDAEA111C08B13A63E457EFA75D61F4E4317B7A1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CDAEA111C08B13A63E457EFA75D61F4E4317B7A1" : 0,
+    "6C2CADA4829AF55F676E963A7CAD997534B0883B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2C3C602B-04B2-4452-B0B7-72CDE82FFB8E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CDAEA111C08B13A63E457EFA75D61F4E4317B7A1" : "LCCSqliteManager\/",
+    "6C2CADA4829AF55F676E963A7CAD997534B0883B" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LCCSqliteManagerDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LCCSqliteManagerDemo\/LCCSqliteManagerDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:OldChicken\/ICView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C2CADA4829AF55F676E963A7CAD997534B0883B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/OldChicken\/LCCSqliteManager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CDAEA111C08B13A63E457EFA75D61F4E4317B7A1"
+    }
+  ]
+}

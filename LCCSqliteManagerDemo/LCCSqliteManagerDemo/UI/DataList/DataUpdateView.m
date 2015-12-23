@@ -100,7 +100,7 @@
     
     NSArray * attributes =  [_manager getSheetAttributesWithSheet:self.sheetTitle];
     NSLog(@"attributes = %@",attributes);
-    cell.textFiled.text = [self.updateContidion valueForKey:attributes[indexPath.row]];
+    cell.textFiled.text = self.dataArray[indexPath.row];
     cell.textFiled.placeholder = attributes[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
@@ -157,6 +157,7 @@
 
 - (void)_deleateAction{
     
+    NSLog(@"关闭视图");
     [self.delegate closeUpdateView];
     
 }

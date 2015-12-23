@@ -28,9 +28,10 @@
 @property(nonatomic,strong)NSString *sheetTitle;
 @property(nonatomic,weak)id<DataUpdateViewDelegate>delegate;
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSArray *dataArray;
 
 //更新条件
-@property(nonatomic,strong)NSMutableDictionary *updateContidion;
+@property(nonatomic,strong)NSString *updateContidion;
 
 
 

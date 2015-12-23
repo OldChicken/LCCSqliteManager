@@ -105,7 +105,7 @@
         [_attributes addObject:pCell.textFiled.text];
     }
     //创建新表
-    BOOL result =  [_manager createSheetWithName  :_sheetTitle attributes:_attributes];
+    BOOL result =  [_manager createSheetWithName:_sheetTitle attributes:_attributes primaryKey:@"id"];
     
     if (result == YES) {
         
@@ -115,7 +115,8 @@
     }
     if (result == NO) {
         
-        NSLog(@"数据库操作失败");
+        [self.delegate insertError];
+
         
     }
     

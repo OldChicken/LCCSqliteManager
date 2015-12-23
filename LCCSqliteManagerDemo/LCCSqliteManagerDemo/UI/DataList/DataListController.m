@@ -26,11 +26,11 @@
     //更新数据页面
     DataUpdateView * _dataUpdateView;
     //搜索条件
-    NSDictionary * _searchCondition;
+    NSString * _searchCondition;
     //删除条件
-    NSMutableDictionary* _deleateCondition;
+    NSString * _deleateCondition;
     //更新条件
-    NSMutableDictionary * _updateCondition;
+    NSString * _updateCondition;
 
 }
 
@@ -47,9 +47,9 @@
     //获取到当前表内所有数据
     _allDataArray = [_manager getSheetDataWithSheet:self.title];
     //初始化更新、查询、删除三个条件
-    _deleateCondition = [[NSMutableDictionary alloc]init];
-    _updateCondition = [[NSMutableDictionary alloc]init];
-    _searchCondition = nil;
+    _deleateCondition = @"";
+    _updateCondition = @"";
+    _searchCondition = @"";
     //表视图
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
@@ -155,17 +155,23 @@
         
         for (int i = 0; i < _attributesArray.count; i ++) {
             UILabel *pLabel = [cell viewWithTag:i+100];
-            [_deleateCondition setObject:[NSString stringWithFormat:@"%@",pLabel.text] forKey:_attributesArray[i] ];
+            if (i == _attributesArray.count - 1) {
+                NSString *pstr = [NSString stringWithFormat:@" \"%@\"=\'%@\'",_attributesArray[i],pLabel.text];
+                _deleateCondition = [_deleateCondition stringByAppendingString:pstr];
+                break;
+            }
+            NSString *pstr = [NSString stringWithFormat:@" \"%@\"=\'%@\' and",_attributesArray[i],pLabel.text];
+            _deleateCondition = [_deleateCondition stringByAppendingString:pstr];
+
         }
         NSLog(@"删除条件 ＝ %@",_deleateCondition);
         
         //删除满足该条件的数据
-        [_manager deleateDataWhere:_deleateCondition from:self.title];
-        
+        [_manager deleateDataFromSheet:self.title where:_deleateCondition];
+        _deleateCondition = @"";
         //从新读取数据并刷新,判断是在哪里删除的数据
-        NSLog(@"没搜索过，读取全部数据");
         _allDataArray = [_manager getSheetDataWithSheet:self.title];
-        if (_searchCondition != nil) {
+        if (![_searchCondition  isEqual: @""]) {
             NSLog(@"搜索过了，返回搜索列表数据");
             _allDataArray = [_manager searchDataFromSheet:self.title where:_searchCondition];
         }
@@ -180,19 +186,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"弹出修改视图");
-    
+    _updateCondition = @"";
     LccDataCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSMutableArray *array = [[NSMutableArray alloc]init];
     for (int i = 0; i < _attributesArray.count; i ++) {
         UILabel *pLabel = [cell viewWithTag:i+100];
-        [_updateCondition setObject:[NSString stringWithFormat:@"%@",pLabel.text] forKey:_attributesArray[i] ];
+        [array addObject:pLabel.text];
+        if (i == _attributesArray.count - 1) {
+            NSString *pstr = [NSString stringWithFormat:@" \"%@\"=\'%@\' ",_attributesArray[i],pLabel.text];
+            _updateCondition = [_updateCondition stringByAppendingString:pstr];
+            break;
+        }
+        NSString *pstr = [NSString stringWithFormat:@" \"%@\"=\'%@\' and",_attributesArray[i],pLabel.text];
+        _updateCondition = [_updateCondition stringByAppendingString:pstr];
+        
     }
-    
+
     //数据更新视图
     _dataUpdateView = [[DataUpdateView alloc]initWithFrame:CGRectMake(0, -KHeight, KWidth, KHeight)];
     _dataUpdateView.delegate = self;
     _dataUpdateView.sheetTitle = self.title;
     _dataUpdateView.cellCount = _attributesArray.count;
     _dataUpdateView.updateContidion = _updateCondition;
+    _dataUpdateView.dataArray = array;
     
     [self.navigationController.view addSubview:_dataUpdateView];
     [self.navigationController.view bringSubviewToFront:_dataUpdateView];
@@ -215,7 +231,8 @@
 }
 
 -(void)insertSuccess{
-    
+    //插入一条新数据后，所有搜索记录清空
+    [self _clearCondition];
     _allDataArray = [_manager getSheetDataWithSheet:self.title];
     [self.tableView reloadData];
 
@@ -253,10 +270,10 @@
 
 -(void)updateSuccess{
     
+    _updateCondition = @"";
     //从新读取数据并刷新,判断是在哪里更新的数据
-    NSLog(@"没搜索过，读取全部数据");
     _allDataArray = [_manager getSheetDataWithSheet:self.title];
-    if (_searchCondition != nil) {
+    if (![_searchCondition  isEqual: @""]) {
         
         NSLog(@"搜索过了，返回搜索列表数据");
         _allDataArray = [_manager searchDataFromSheet:self.title where:_searchCondition];
@@ -295,7 +312,8 @@
         NSLog(@"插入数据");
         [UIView animateWithDuration:.3 animations:^{
             _dataInsertView.frame = CGRectMake(0, 0, KWidth, KHeight);
-        } completion:nil];
+        } completion:^(BOOL finished) {
+        }];
 
     }
     if (pButton.tag == 1) {
@@ -319,19 +337,19 @@
         
         NSLog(@"查找数据");
         UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"查找"
-                                                                       message:@"请输入查找条件,条件为空则获取全部数据;查找格式:字段=查找值,多个条件之间以逗号间隔"
+                                                                       message:@"请输入查找条件,条件为空则获取全部数据;查找条件举例:\"姓名\"=‘LCC’ "
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         [alter addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             
-            textField.placeholder = @"格式：titleA=?,titleB=?,............";
+            textField.placeholder = @"提示:多个条件之间用and连接";
             
         }];
         
         UIAlertAction *searchAction = [UIAlertAction actionWithTitle:@"查找" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            NSString *condition = alter.textFields[0].text;
-            if ([condition  isEqual: @""]) {
+            _searchCondition = alter.textFields[0].text;
+            if ([_searchCondition  isEqual: @""]) {
                 
                 _allDataArray = [_manager getSheetDataWithSheet:self.title];
                 [self.tableView reloadData];
@@ -339,7 +357,6 @@
             }
             else{
                 
-                _searchCondition = [self _strExchange:condition];
                 _allDataArray = [_manager searchDataFromSheet:self.title where:_searchCondition];
                 [self.tableView reloadData];
                 
@@ -351,7 +368,7 @@
         
         [alter addAction:cannleAction];
         [alter addAction:searchAction];
-        _searchCondition = nil;
+        _searchCondition = @"";
         [self presentViewController:alter animated:YES completion:nil];
 
     }
@@ -359,32 +376,11 @@
     
 }
 
-#pragma mark - 条件处理
-- (NSDictionary *)_strExchange:(NSString *)condition{
+- (void)_clearCondition{
     
-    @try {
-        
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-        NSArray *list=[condition componentsSeparatedByString:@","];
-        NSLog(@"list :%@",list);
-        for (int i = 0; i < list.count; i ++) {
-            NSArray *parray = [list[i] componentsSeparatedByString:@"="];
-            [dic setObject:parray[1] forKey:parray[0]];
-            
-        }
-        return dic;
+    _searchCondition = @"";
+    _updateCondition = @"";
+    _deleateCondition = @"";
 
-    }
-    @catch (NSException *exception) {
-        
-        NSLog(@"输入格式错误，请重新输入");
-        return nil;
-        
-    }
-    @finally {
-    }
-    
-    
 }
-
 @end

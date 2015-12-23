@@ -24,9 +24,10 @@
 		E214A4041C23989B00A4EBE1 /* LccCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3FE1C23989B00A4EBE1 /* LccCell.m */; };
 		E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A4001C23989B00A4EBE1 /* LccDataCell.m */; };
 		E214A40C1C23990D00A4EBE1 /* LCCSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */; };
-		E214A41C1C25010D00A4EBE1 /* btn_save.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A41A1C25010D00A4EBE1 /* btn_save.png */; };
-		E214A41D1C25010D00A4EBE1 /* btn_cannel.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A41B1C25010D00A4EBE1 /* btn_cannel.png */; };
-		E214A41F1C25016600A4EBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A41E1C25016600A4EBE1 /* icon.png */; };
+		E214A4251C2519DF00A4EBE1 /* LCCSqliteGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */; };
+		E214A42F1C252D4000A4EBE1 /* btn_cannel.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42C1C252D4000A4EBE1 /* btn_cannel.png */; };
+		E214A4301C252D4000A4EBE1 /* btn_save.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42D1C252D4000A4EBE1 /* btn_save.png */; };
+		E214A4311C252D4000A4EBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42E1C252D4000A4EBE1 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,9 +82,11 @@
 		E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteManager.h; path = Tools/LCCSqliteManager/LCCSqliteManager.h; sourceTree = "<group>"; };
 		E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteManager.m; path = Tools/LCCSqliteManager/LCCSqliteManager.m; sourceTree = "<group>"; };
 		E214A40D1C239ED100A4EBE1 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		E214A41A1C25010D00A4EBE1 /* btn_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_save.png; sourceTree = "<group>"; };
-		E214A41B1C25010D00A4EBE1 /* btn_cannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cannel.png; sourceTree = "<group>"; };
-		E214A41E1C25016600A4EBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		E214A4231C2519DF00A4EBE1 /* LCCSqliteGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteGCD.h; path = ../../LCCSqliteManager/LCCSqliteGCD.h; sourceTree = "<group>"; };
+		E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteGCD.m; path = ../../LCCSqliteManager/LCCSqliteGCD.m; sourceTree = "<group>"; };
+		E214A42C1C252D4000A4EBE1 /* btn_cannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_cannel.png; path = Sourse/Common/btn_cannel.png; sourceTree = "<group>"; };
+		E214A42D1C252D4000A4EBE1 /* btn_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_save.png; path = Sourse/Common/btn_save.png; sourceTree = "<group>"; };
+		E214A42E1C252D4000A4EBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Sourse/Common/icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,8 @@
 			children = (
 				E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */,
 				E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */,
+				E214A4231C2519DF00A4EBE1 /* LCCSqliteGCD.h */,
+				E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */,
 			);
 			name = LCCSqliteManager;
 			sourceTree = "<group>";
@@ -259,9 +264,9 @@
 		E214A3E61C23963F00A4EBE1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E214A41A1C25010D00A4EBE1 /* btn_save.png */,
-				E214A41B1C25010D00A4EBE1 /* btn_cannel.png */,
-				E214A41E1C25016600A4EBE1 /* icon.png */,
+				E214A42C1C252D4000A4EBE1 /* btn_cannel.png */,
+				E214A42D1C252D4000A4EBE1 /* btn_save.png */,
+				E214A42E1C252D4000A4EBE1 /* icon.png */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -382,11 +387,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E214A3ED1C2396F000A4EBE1 /* Main.storyboard in Resources */,
-				E214A41C1C25010D00A4EBE1 /* btn_save.png in Resources */,
-				E214A41D1C25010D00A4EBE1 /* btn_cannel.png in Resources */,
+				E214A42F1C252D4000A4EBE1 /* btn_cannel.png in Resources */,
+				E214A4311C252D4000A4EBE1 /* icon.png in Resources */,
 				E214A39C1C23931400A4EBE1 /* LaunchScreen.storyboard in Resources */,
-				E214A41F1C25016600A4EBE1 /* icon.png in Resources */,
 				E214A3991C23931400A4EBE1 /* Assets.xcassets in Resources */,
+				E214A4301C252D4000A4EBE1 /* btn_save.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +418,7 @@
 			files = (
 				E214A3E91C23966700A4EBE1 /* AppDelegate.m in Sources */,
 				E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */,
+				E214A4251C2519DF00A4EBE1 /* LCCSqliteGCD.m in Sources */,
 				E214A4021C23989B00A4EBE1 /* DataListController.m in Sources */,
 				E214A4011C23989B00A4EBE1 /* DataInsertView.m in Sources */,
 				E214A3F41C23988000A4EBE1 /* LccButton.m in Sources */,
