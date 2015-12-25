@@ -24,11 +24,11 @@
 		E214A4041C23989B00A4EBE1 /* LccCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3FE1C23989B00A4EBE1 /* LccCell.m */; };
 		E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A4001C23989B00A4EBE1 /* LccDataCell.m */; };
 		E214A40C1C23990D00A4EBE1 /* LCCSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */; };
-		E214A4251C2519DF00A4EBE1 /* LCCSqliteGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */; };
 		E214A42F1C252D4000A4EBE1 /* btn_cannel.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42C1C252D4000A4EBE1 /* btn_cannel.png */; };
 		E214A4301C252D4000A4EBE1 /* btn_save.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42D1C252D4000A4EBE1 /* btn_save.png */; };
 		E214A4311C252D4000A4EBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42E1C252D4000A4EBE1 /* icon.png */; };
-		E29679051C2BD83E00866197 /* LCCSqliteSheetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */; };
+		E29679081C2D406A00866197 /* LCCSqliteSheetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */; };
+		E296790B1C2D40A200866197 /* LCCSqliteGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E296790A1C2D40A200866197 /* LCCSqliteGCD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,13 +83,13 @@
 		E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteManager.h; path = Tools/LCCSqliteManager/LCCSqliteManager.h; sourceTree = "<group>"; };
 		E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteManager.m; path = Tools/LCCSqliteManager/LCCSqliteManager.m; sourceTree = "<group>"; };
 		E214A40D1C239ED100A4EBE1 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		E214A4231C2519DF00A4EBE1 /* LCCSqliteGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteGCD.h; path = ../../LCCSqliteManager/LCCSqliteGCD.h; sourceTree = "<group>"; };
-		E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteGCD.m; path = ../../LCCSqliteManager/LCCSqliteGCD.m; sourceTree = "<group>"; };
 		E214A42C1C252D4000A4EBE1 /* btn_cannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_cannel.png; path = Sourse/Common/btn_cannel.png; sourceTree = "<group>"; };
 		E214A42D1C252D4000A4EBE1 /* btn_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_save.png; path = Sourse/Common/btn_save.png; sourceTree = "<group>"; };
 		E214A42E1C252D4000A4EBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Sourse/Common/icon.png; sourceTree = "<group>"; };
-		E29679031C2BD83E00866197 /* LCCSqliteSheetHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCSqliteSheetHandler.h; sourceTree = "<group>"; };
-		E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCSqliteSheetHandler.m; sourceTree = "<group>"; };
+		E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteSheetHandler.h; path = Tools/LCCSqliteManager/LCCSqliteSheetHandler.h; sourceTree = "<group>"; };
+		E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteSheetHandler.m; path = Tools/LCCSqliteManager/LCCSqliteSheetHandler.m; sourceTree = "<group>"; };
+		E29679091C2D40A200866197 /* LCCSqliteGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteGCD.h; path = Tools/LCCSqliteManager/LCCSqliteGCD.h; sourceTree = "<group>"; };
+		E296790A1C2D40A200866197 /* LCCSqliteGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteGCD.m; path = Tools/LCCSqliteManager/LCCSqliteGCD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,12 +184,12 @@
 		E214A3BF1C23937400A4EBE1 /* LCCSqliteManager */ = {
 			isa = PBXGroup;
 			children = (
+				E29679091C2D40A200866197 /* LCCSqliteGCD.h */,
+				E296790A1C2D40A200866197 /* LCCSqliteGCD.m */,
+				E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */,
+				E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */,
 				E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */,
 				E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */,
-				E29679031C2BD83E00866197 /* LCCSqliteSheetHandler.h */,
-				E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */,
-				E214A4231C2519DF00A4EBE1 /* LCCSqliteGCD.h */,
-				E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */,
 			);
 			name = LCCSqliteManager;
 			sourceTree = "<group>";
@@ -423,13 +423,13 @@
 			files = (
 				E214A3E91C23966700A4EBE1 /* AppDelegate.m in Sources */,
 				E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */,
-				E29679051C2BD83E00866197 /* LCCSqliteSheetHandler.m in Sources */,
-				E214A4251C2519DF00A4EBE1 /* LCCSqliteGCD.m in Sources */,
+				E296790B1C2D40A200866197 /* LCCSqliteGCD.m in Sources */,
 				E214A4021C23989B00A4EBE1 /* DataListController.m in Sources */,
 				E214A4011C23989B00A4EBE1 /* DataInsertView.m in Sources */,
 				E214A3F41C23988000A4EBE1 /* LccButton.m in Sources */,
 				E214A40C1C23990D00A4EBE1 /* LCCSqliteManager.m in Sources */,
 				E214A3F61C23988000A4EBE1 /* SheetListController.m in Sources */,
+				E29679081C2D406A00866197 /* LCCSqliteSheetHandler.m in Sources */,
 				E214A4041C23989B00A4EBE1 /* LccCell.m in Sources */,
 				E214A4031C23989B00A4EBE1 /* DataUpdateView.m in Sources */,
 				E214A38E1C23931300A4EBE1 /* main.m in Sources */,
