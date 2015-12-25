@@ -28,6 +28,7 @@
 		E214A42F1C252D4000A4EBE1 /* btn_cannel.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42C1C252D4000A4EBE1 /* btn_cannel.png */; };
 		E214A4301C252D4000A4EBE1 /* btn_save.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42D1C252D4000A4EBE1 /* btn_save.png */; };
 		E214A4311C252D4000A4EBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42E1C252D4000A4EBE1 /* icon.png */; };
+		E29679051C2BD83E00866197 /* LCCSqliteSheetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		E214A42C1C252D4000A4EBE1 /* btn_cannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_cannel.png; path = Sourse/Common/btn_cannel.png; sourceTree = "<group>"; };
 		E214A42D1C252D4000A4EBE1 /* btn_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_save.png; path = Sourse/Common/btn_save.png; sourceTree = "<group>"; };
 		E214A42E1C252D4000A4EBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Sourse/Common/icon.png; sourceTree = "<group>"; };
+		E29679031C2BD83E00866197 /* LCCSqliteSheetHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCSqliteSheetHandler.h; sourceTree = "<group>"; };
+		E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCSqliteSheetHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 			children = (
 				E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */,
 				E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */,
+				E29679031C2BD83E00866197 /* LCCSqliteSheetHandler.h */,
+				E29679041C2BD83E00866197 /* LCCSqliteSheetHandler.m */,
 				E214A4231C2519DF00A4EBE1 /* LCCSqliteGCD.h */,
 				E214A4241C2519DF00A4EBE1 /* LCCSqliteGCD.m */,
 			);
@@ -418,6 +423,7 @@
 			files = (
 				E214A3E91C23966700A4EBE1 /* AppDelegate.m in Sources */,
 				E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */,
+				E29679051C2BD83E00866197 /* LCCSqliteSheetHandler.m in Sources */,
 				E214A4251C2519DF00A4EBE1 /* LCCSqliteGCD.m in Sources */,
 				E214A4021C23989B00A4EBE1 /* DataListController.m in Sources */,
 				E214A4011C23989B00A4EBE1 /* DataInsertView.m in Sources */,

@@ -98,6 +98,17 @@
         [attributetitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
         attributetitle.textColor = [UIColor grayColor];
         attributetitle.textAlignment = NSTextAlignmentCenter;
+        
+//        if ([attributetitle.text isEqualToString:[_manager getSheetPrimaryKeyWithSheet:self.title]]) {
+//            attributetitle.textColor = [UIColor redColor];
+//        }
+        //主键查询
+        for (id object in [_manager getSheetPrimaryKeyWithSheet:self.title]) {
+            if ([attributetitle.text isEqualToString:object]) {
+                attributetitle.textColor = [UIColor redColor];
+            }
+        }
+        
         [BGView addSubview:attributetitle];
     }
     
@@ -337,12 +348,12 @@
         
         NSLog(@"查找数据");
         UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"查找"
-                                                                       message:@"请输入查找条件,条件为空则获取全部数据;查找条件举例:\"姓名\"=‘LCC’ "
+                                                                       message:@"请输入查找条件,条件为空则获取全部数据;查找条件举例:姓名=‘LCC’and年龄>20 "
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         [alter addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             
-            textField.placeholder = @"提示:多个条件之间用and连接";
+            textField.placeholder = @"提示:多个条件之间用and连接,符号注意区分大小写";
             
         }];
         

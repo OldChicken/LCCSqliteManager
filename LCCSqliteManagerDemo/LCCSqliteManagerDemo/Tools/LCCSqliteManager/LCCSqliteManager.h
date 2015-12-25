@@ -7,22 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LCCSqliteSheetHandler.h"
 #import <sqlite3.h>
-
-typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
-    
-    LCCSqliteReferencesKeyTypeDefault = 0,  //父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识
-    LCCSqliteReferencesKeyTypeCasCade = 1,  //在父表上update/delete记录时,同步update/delete掉子表的匹配记录
-    LCCSqliteReferencesKeyTypeRestrict = 2,  //
-    LCCSqliteReferencesKeyTypeNoAction = 3,  //如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作
-
-
-};
 
 
 
 @interface LCCSqliteManager : NSObject
-
 
 
 
@@ -65,12 +55,14 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
 - (BOOL)closeSqliteFile;
 
 
+
 /**
  * # 删除指定的数据库文件
  
- * @ 该操作可以指定文件，需要传入文件名作为参数。删除的时候会先关闭当前数据库文件。
+ * @ 该操作可以指定删除文件，需要传入文件名作为参数。删除的时候会先关闭当前数据库文件。
  */
 - (BOOL)deleateSqliteFile:(NSString *)filename;
+
 
 
 
@@ -84,6 +76,7 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
 - (NSArray*)getAllSheetNames;
 
 
+
 /**
  * # 创建一张表
  
@@ -91,9 +84,12 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
  * @ 例如，创建一张名为学生成绩的表，那么pName = @“学生成绩”,pAttributes = @[@"姓名",@“学号”,@"成绩"];
  * @ 表名和字段可以为@“”，但不可以为nil。不过希望表名和字段尽量不为@“”,既不符合实际，也可能会有歧义出现
  * @ 参数primaryKey的作用是，标记一个字段作为主键，被标记的字段在整张表中不会出现一样的数据，你可以用主键作为数据的唯一
- 标识，主键数据不能修改。如果你希望这张表中的某个字段可以与其他表建立起联系，那么设置这个字段为主键。
+ 标识。如果你希望这张表中的某个字段可以与其他表建立起联系，那么设置这个字段为主键。
+ 
+ * @ 1.1版本中已删除该方法
  */
 - (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pkey;
+
 
 
 /**
@@ -101,18 +97,22 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
  
  * @ 通过这个方法，你可以建立一张依赖于有唯一标识(主键)的表，你需要传入以下参数:
  * @ 新表的名字、字段与主键,旧表的名字与主键,以及两表间的依赖关系。
+ * @ 你需要注意的是，有主键的表才能够作为主表，否则主键与外键失去意义
  
- * @@ 你需要注意的是，有主键的表才能够作为主表，假如我们现在有两张表，“学生信息”与“学生成绩”，学生信息有三个字段:姓名 性别 学号，“学生成绩”则有很多个字段，姓名，学号，语文成绩，数学成绩...等等，现在，你有必要建立起两张表的联系，满足以下需求:
- 
-    1.学生成绩表依赖于学生信息，即学生成绩表里不能出现学生信息中不存在的学生的成绩
-    2.仅当学生信息表中添加了一个新生，你才可以往成绩表里添加该生的成绩
-    2.当学生信息表中删除一个学生的信息，成绩表跟随删除该生信息
- 
-    这张成绩表就可以用下述方法创建，显然，学号作为两张表的主键可以满足上述要求，虽然两张表的主键名称不要求一样，但是为了提高体验，建议取成一样。
+ * @1.1版本中已删除该方法
  
  */
-- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pKey   referenceSheet:(NSString*)oldName referenceType:(LCCSqliteReferencesKeyType)type;
+//- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pKey   referenceSheet:(NSString*)oldName referenceType:(LCCSheetReferencesType)type;
 
+
+
+
+/**
+ * # 创建一张表
+ 
+ * @ 1.1版本中希望通过这种方式建表，你可以不用一次性传入那么多参数，你只要在block中对sheet进行相关设置即可，创建具体方式参考LCCSqliteSheetHandler的相关设定。
+ */
+- (BOOL)createSheetWithSheetHandler:(void (^)(LCCSqliteSheetHandler *sheet)) sheetHandler;
 
 
 
@@ -145,9 +145,11 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
 /**
  * # 获取表的主键
  
- * @ 你需要传入表名,返回一个NSString
+ * @ 你需要传入表名,返回一个NSArray
+ 
+ * @ 虽然主键只有一个，但是主键可以由多个字段组合而成，因此返回的是一个数组，里面存放了组合成主键的相关字段
  */
-- (NSString *)getSheetPrimaryKeyWithSheet:(NSString *)pName;
+- (NSArray *)getSheetPrimaryKeyWithSheet:(NSString *)pName;
 
 
 
@@ -196,7 +198,9 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
  * # 查找指定数据
  
  * @ 你需要传入两个参数，表名以及查找条件,例如,你要查看“学生成绩”这张表中条件为“姓名”=‘LCC’的信息，你可以执行如下代码:
- [_manager searchDataFromSheet:@“学生成绩” Where:@"\“姓名\"=\'LCC\'" ，注意，condition参数中，你需要对字段和值进行区分，字段名需要用双引号，数值需要用单引号,因此字符串中需要用\对双引号和单引号做出标示。如果不作出区分，条件为姓名=LCC，查找并不会失败，但是当出现字段是数字等其他情况时，会产生歧义，即条件为1=a,数据库无法识别这里的1是什么，也就无法进行正确的查询。换言之，数据库中，字符串用单引号标示，字段，表名等用双引号标示。为了确保查找无误，希望代码中都做出区分。
+ [_manager searchDataFromSheet:@“学生成绩” Where:@" \“姓名\"=\'LCC\' " ，注意，condition参数中，你需要对字段和值进行区分，字段名需要用双引号，数值需要用单引号，且区分大小写(这对于我这个不区分大小写的人来说真困按钮) 。因此字符串中需要用\对双引号和单引号做出标示。条件为姓名='LCC'，查找并不会失败，但是当出现字段是数字等其他情况时，会产生歧义，即类似条件为1='',数据库无法识别这里的1是什么，也就无法进行正确的查询。换言之，数据库中，字符串用单引号标示，字段，表名等用双引号标示。为了确保查找无误，希望代码中都做出区分。总结而言，"属性" 运算符 ‘值’  的查找方式能够确保查找的准确性
+ 
+ * @ 为了统一数据类型，数据库中所有的数据类型我都选择了TEXT字符串进行保存，所有的数据类型转换都希望放在你的代码中进行转换，因此这里不提供任何数据的相关计算方法，仅做数据存储用。
  
  
  * @下面列出常用的查询条件:
@@ -205,11 +209,14 @@ typedef NS_ENUM(NSInteger, LCCSqliteReferencesKeyType) {
  * @比较查找条件:NSString *compareContion = [NSString stringWithFormat:@" \"成绩\">\'100\' "];
  * @....others
  
+ 
  * @上述查找条件可以组合输入，条件之间用and连接，比如你需要查找成绩>80分的且姓李的人，则代码如下:
  
- NSString * searchCondition = @"   \"姓名\"Like\'李%\'and \"成绩\">\'80\'  ";
+ NSString * searchCondition = @"   \"姓名\" Like \'李%\' and  \"成绩\" > \'80\'  ";
  [_manager searchDataFromSheet:@"学生成绩"  where:searchCondition ]；
     查找成功的话会返回一个按查找条件进行排序的数组
+ 
+ * @ 补充一点，因为存储类型都是TEXT，因此，比较字符串'20' 与'3'，结果是后者大，你可以进行数据转换成NSInteger后再比较，若一定要在数据库中进行运算，你要确保数据存储的位数一致，既比较'20' 与'03'，这样得出的结果方才符合你的要求。
  */
 - (NSArray *)searchDataFromSheet:(NSString *)sheetName where:(NSString *)condition;
 

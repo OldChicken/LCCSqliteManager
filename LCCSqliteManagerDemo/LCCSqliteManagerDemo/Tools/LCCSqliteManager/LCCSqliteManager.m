@@ -8,13 +8,13 @@
 
 #import "LCCSqliteManager.h"
 
-
 @implementation LCCSqliteManager
 {
 
     sqlite3 *_sqlite ;
-
+    
 }
+
 
 
 + (LCCSqliteManager *)shareInstance{
@@ -30,20 +30,26 @@
 
 }
 
+
+
 #pragma mark - 数据库信息查询
 + (NSString*)sqliteLibVersion {
     return [NSString stringWithFormat:@"%s", sqlite3_libversion()];
 }
 
+
 + (BOOL)isSqliteThreadSafe {
     return sqlite3_threadsafe() != 0;
 }
+
+
+
 
 #pragma mark - 数据库操作
 - (BOOL)openSqliteFile:(NSString *)filename{
     
     if (_sqlite) {
-        NSLog(@"error:目前只支持同时打开一个数据库文件，请先关闭当前正在运行的文件");
+        NSLog(@"error:目前暂时只支持同时打开一个数据库文件，请先关闭当前正在运行的文件");
         return YES;
     }
     if (!filename) {
@@ -64,6 +70,7 @@
     return YES;
 
 }
+
 
 
 - (BOOL)closeSqliteFile{
@@ -102,6 +109,9 @@
     
 }
 
+
+
+
 - (BOOL)deleateSqliteFile:(NSString *)filename{
     
     [self closeSqliteFile];
@@ -117,6 +127,10 @@
     NSLog(@"数据库%@删除成功",filename);
     return YES;
 }
+
+
+
+
 
 
 #pragma mark - 数据表操作
@@ -149,6 +163,7 @@
 
 
 
+
 - (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pkey{
     
     
@@ -165,18 +180,16 @@
     //重构数组
     NSMutableArray *attributes = [[NSMutableArray alloc]init];
     for (int i = 0; i < pAttributes.count; i++) {
-        
         NSString * att = [NSString stringWithFormat:@"\"%@\" TEXT",pAttributes[i]];
-        if (  [pkey isEqualToString: pAttributes[i]] ) {
-            att = [NSString stringWithFormat:@"\"%@\" TEXT PRIMARY KEY",pAttributes[i]];
-        }
         [attributes addObject:att];
     }
-
+    if (pkey) {
+        [attributes addObject:[NSString stringWithFormat:@"PRIMARY KEY (\"%@\")",pkey]];
+    }
     //构造SQL语句，创建数据库表。
     NSString *appendString = [[NSString alloc]init];
-    for (int i = 0 ; i < pAttributes.count; i ++) {
-        if (i == pAttributes.count - 1) {
+    for (int i = 0 ; i < attributes.count; i ++) {
+        if (i == attributes.count - 1) {
             appendString  = [appendString stringByAppendingString:attributes[i]];
             break;
         }
@@ -199,7 +212,10 @@
 
 }
 
-- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pKey referenceSheet:(NSString *)oldName referenceType:(LCCSqliteReferencesKeyType)type{
+
+
+
+- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pKey referenceSheet:(NSString *)oldName referenceType:(LCCSheetReferencesType)type{
     //新表判断
     if (!pName || !pAttributes) {
         NSLog(@"error:缺少表名或字段");
@@ -211,7 +227,7 @@
         return NO;
     }
     //旧表判断,如果旧表没有主键，返回
-    NSString *oldSheetPK = [self getSheetPrimaryKeyWithSheet:oldName];
+    NSArray *oldSheetPK = [self getSheetPrimaryKeyWithSheet:oldName];
     NSLog(@"%@",oldSheetPK);
     if (!oldSheetPK) {
         NSLog(@"error:必须依赖一张有主键的表");
@@ -256,6 +272,35 @@
 
     
 }
+
+
+
+- (BOOL)createSheetWithSheetHandler:(void (^)(LCCSqliteSheetHandler *))sheetHandler{
+    
+    LCCSqliteSheetHandler *sheet = [[LCCSqliteSheetHandler alloc]init];
+    sheetHandler(sheet);
+    
+    NSString *targetSql = [sheet returnTargetSql];
+    
+    if (!targetSql) {
+        return NO;
+    }
+    
+    //执行SQL语句
+    char *error = NULL;
+    int result = sqlite3_exec(_sqlite, [targetSql UTF8String], NULL, NULL, &error);
+    if (result != SQLITE_OK) {
+        NSLog(@"创建表失败:%s", error);
+        return NO;
+    }
+    
+    NSLog(@"创建表成功");
+    return YES;
+    
+    
+}
+
+
 
 
 - (BOOL)deleateSheetWithName:(NSString *)pName{
@@ -314,7 +359,7 @@
     
 }
 
-- (NSString *)getSheetPrimaryKeyWithSheet:(NSString *)pName{
+- (NSArray *)getSheetPrimaryKeyWithSheet:(NSString *)pName{
     
     if (!pName) {
         NSLog(@"error:名字为nil");
@@ -327,6 +372,7 @@
     const char *getTableInfo = [targetSql UTF8String];
     
     //预编译
+    NSMutableArray *primaryKey = [NSMutableArray array];
     sqlite3_prepare_v2(_sqlite, getTableInfo, -1, &ppStmt, nil);
     while (sqlite3_step(ppStmt) == SQLITE_ROW) {
         
@@ -334,11 +380,14 @@
         char *isPrimaryKey = (char *)sqlite3_column_text(ppStmt, 5);
         NSString *attributeName = [[NSString alloc] initWithUTF8String:nameData];
         NSString *isPK = [[NSString alloc] initWithUTF8String:isPrimaryKey];
-        if ( [isPK isEqualToString:@"1"]) {
-            return attributeName;
+        if ( ![isPK isEqualToString:@"0"]) {
+            [primaryKey addObject:attributeName];
         }
+        
     }
-        return nil;
+    NSLog(@"主键数组 = %@",primaryKey);
+    return primaryKey;
+    
 }
 
 
@@ -606,6 +655,16 @@
     NSLog(@"外建支持关闭成功");
     return YES;
     
+}
+
+
+#pragma mark - Auxiliary function
+- (NSString *)conditionExchange:(NSString *)oldcondition{
+    
+    NSString *newCondition = [oldcondition stringByReplacingOccurrencesOfString:@"”" withString:@"\""];
+    newCondition = [newCondition stringByReplacingOccurrencesOfString:@"”" withString:@"\""];
+    
+    return newCondition;
 }
 
 @end

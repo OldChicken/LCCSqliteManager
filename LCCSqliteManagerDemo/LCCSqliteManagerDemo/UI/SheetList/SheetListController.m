@@ -36,13 +36,38 @@
     [super viewDidLoad];
     [self _createButtonItem];
 
+    
     //数据库操作
     _manager = [LCCSqliteManager shareInstance];
-    [_manager openSqliteFile:@"Person"];
+    [_manager openSqliteFile:@"database"];
     
+    
+    //我帮你们建的两张表
+    [_manager createSheetWithSheetHandler:^(LCCSqliteSheetHandler *sheet) {
+       sheet.sheetName = @"我的好友列表";
+        sheet.sheetType = LCCSheetTypeVariable;
+        sheet.sheetField = @[@"微信号",@"昵称",@"备注",@"是否屏蔽"];
+        sheet.primaryKey = @[@"微信号",@"昵称"];
+    }];
+    
+    [_manager createSheetWithSheetHandler:^(LCCSqliteSheetHandler *sheet) {
+        sheet.sheetName = @"好友详细资料";
+        sheet.sheetType = LCCSheetTypeVariable;
+        sheet.sheetField = @[@"微信号",@"昵称",@"头像",@"签名",@"性别",@"主页"];
+        
+        
+        sheet.forgienKey = @[@"微信号",@"昵称"];
+        sheet.referencesSheetName = @"我的好友列表";
+        sheet.referenceskey = @[@"微信号",@"昵称"];
+        sheet.updateReferencesType = LCCSqliteReferencesKeyTypeCasCade;
+        sheet.deleateReferencesType = LCCSqliteReferencesKeyTypeCasCade;
+    }];
+
+
 
     
     
+
 //    读取列表
     _sheetListArray = [_manager getAllSheetNames];
     
@@ -80,7 +105,7 @@
         [textField addTarget:self action:@selector(_inputChangeAction:) forControlEvents:UIControlEventEditingChanged];
         
     }];
-    
+
     _nextAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         _sheetInsertView = [[SheetInsertView alloc]initWithFrame:CGRectMake(0, -KHeight, KWidth, KHeight) ];
@@ -92,7 +117,7 @@
         [UIView animateWithDuration:.3 animations:^{
             _sheetInsertView.frame = CGRectMake(0, 0, KWidth, KHeight);
         } completion:nil];
-    
+
     }];
     
     _nextAction.enabled = NO;

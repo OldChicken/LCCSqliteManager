@@ -105,7 +105,7 @@
         [_attributes addObject:pCell.textFiled.text];
     }
     //创建新表
-    BOOL result =  [_manager createSheetWithName:_sheetTitle attributes:_attributes primaryKey:@"id"];
+    BOOL result =  [_manager createSheetWithName:_sheetTitle attributes:_attributes primaryKey:nil];
     
     if (result == YES) {
         
