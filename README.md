@@ -9,7 +9,7 @@ github地址:https://github.com/OldChicken/LCCSqliteManager
 
 # 使用明细
 ###1.环境搭建<br>
-    将下载后的LCCSqliteManager文件夹直接拖入你的项目中，并往你的项目中导入C语言库文件libsqlite3.0后就可以直接使用了。
+将下载后的LCCSqliteManager文件夹直接拖入你的项目中，并往你的项目中导入C语言库文件libsqlite3.0后就可以直接使用了。
     
 ###2.基本方法
 
