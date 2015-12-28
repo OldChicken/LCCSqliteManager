@@ -29,7 +29,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
       sheet.sheetField = @[@"column1",@"column2",@"column3",@"column4"];
     }];
     ```
-    上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看LCCSqliteSheetHandler类的头文件，了解如何设置一张完整的表。
+    上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看LCCSqliteSheetHandler类的头文件，了解如何设置一张完整的表。<br><br>
 
 
 
@@ -38,7 +38,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     [manager insertDataToSheet:@"Table1" withData:@[@"1",@"2",@"3",@"4"];
     ```
-    向上述创建的表中添加四个数据
+    向上述创建的表中添加四个数据<br><br>
 
 
 
@@ -47,7 +47,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     [manager deleateDataFromSheet:@“Table1” where:@"  \"column1\"=\'1\'  ";
     ```
-    删除表Table1中，字段"column1"为'data1'的那行数据。where后面跟的字符串是删除条件，你可以输入精确条件、比较条件、模糊查找条件、组合条件等。注意，字段用“”辨识，数据用‘’辨识。具体查找条件在deleateDataFromSheet的注释中有详细介绍。
+    删除表Table1中，字段"column1"为'data1'的那行数据。where后面跟的字符串是删除条件，你可以输入精确条件、比较条件、模糊查找条件、组合条件等。注意，字段用“”辨识，数据用‘’辨识。具体查找条件在deleateDataFromSheet的注释中有详细介绍。<br><br>
 
 
 
@@ -56,7 +56,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     [manager updateDataToSheet:@"Table1" withData:@[@"a","b",@"c",@"d"] where:@"  \"column1\"=\'1\' “ ;
     ```
-    将表Table1中符合”column“＝‘1’的所有数据更新。
+    将表Table1中符合”column“＝‘1’的所有数据更新。<br><br>
 
 
 
@@ -65,7 +65,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     NSArray *result = [manager searchDataFromSheet:@"Table1"  where:@"  \"column1\"=\'1\' “ ;
     ```
-    得到表Table1中 "column1"='1' 的所有数据。
+    得到表Table1中 "column1"='1' 的所有数据。<br><br>
 
 
 >* 说明:这里，查找条件中的 \"column1\"=\'1\',仅仅是用于sqlite中区分字段和字符串的作用。希望不要与NSString中的“”搞混
