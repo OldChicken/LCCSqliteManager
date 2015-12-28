@@ -29,7 +29,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     sheet.sheetField = @[@"column1",@"column2",@"column3",@"column4"];
     }];
 ```
->>>上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看LCCSqliteSheetHandler类的头文件，了解如何设置一张完整的表。
+上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看LCCSqliteSheetHandler类的头文件，了解如何设置一张完整的表。
 
 >>增
 
