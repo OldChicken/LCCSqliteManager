@@ -47,9 +47,9 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     
     
     
->* 得到表的所有字段
+>* 得到表的所有数据
     ```Objective-C
-    NSArray *dates = [manager getSheetDataCountWithSheet:@“Table1”]
+    NSArray *dates = [manager getSheetDataWithSheet:@“Table1”]
     ```
     上述代码返回表Table1的所有数据。<br><br><br>
     
@@ -94,7 +94,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
 
 
 
-上面六个方法是主要方法，可以完成数据库的基本操作。一些其他方法，请查看LCCSqliteManager的头文件。
+上个方法是主要方法，可以完成数据库的基本操作。一些其他方法，请查看LCCSqliteManager的头文件。
 
 
 # 注意事项
