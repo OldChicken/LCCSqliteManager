@@ -11,14 +11,14 @@ github地址:https://github.com/OldChicken/LCCSqliteManager
 将下载后的LCCSqliteManager文件夹直接拖入你的项目中，并往你的项目中导入C语言库文件libsqlite3.0后就可以直接使用了。
     
 ###2.基本方法
+获得单例
+    ```Objective-C
+    LCCSqliteManager *manager = [LCCSqliteManager shareInstance];  
+    [manager openSqliteFile:@"yourSqliteFileName"];
+    ```
+    在进行数据库操作之前，你需要在你的项目中先执行下列代码，所有操作都需要用manager对象进行调用。openSqliteFile这个方法，若Sqlite文件不存在，则会自动创建一个并打开，你不需要设置路径，只需要传入文件名即可。<br><br><br>
 
-在进行数据库操作之前，你需要在你的项目中先执行下列代码，所有操作都需要用manager对象进行调用。openSqliteFile这个方法，若Sqlite文件不存在，则会自动创建一个并打开，你不需要设置路径，只需要传入文件名即可。
 
-```Objective-C
-LCCSqliteManager *manager = [LCCSqliteManager shareInstance];  
-[manager openSqliteFile:@"yourSqliteFileName"];
-```
-<br><br>
 
 接下来调用相关方法进行数据库管理<br>
 >* 建表
