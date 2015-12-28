@@ -13,7 +13,12 @@ github地址:https://github.com/OldChicken/LCCSqliteManager
 ## 使用明细
 1.环境搭建
 
-2.增删改查
+2.基本方法
+
+LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
+[manager openSqliteFile:@"yourSqliteFileName"];
+
+在你的项目中执行这两句代码，你旧可以进行数据库的管理了。
 
 3.外键连接
 
