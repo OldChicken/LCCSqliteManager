@@ -184,12 +184,12 @@
 		E214A3BF1C23937400A4EBE1 /* LCCSqliteManager */ = {
 			isa = PBXGroup;
 			children = (
-				E29679091C2D40A200866197 /* LCCSqliteGCD.h */,
-				E296790A1C2D40A200866197 /* LCCSqliteGCD.m */,
-				E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */,
-				E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */,
 				E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */,
 				E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */,
+				E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */,
+				E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */,
+				E29679091C2D40A200866197 /* LCCSqliteGCD.h */,
+				E296790A1C2D40A200866197 /* LCCSqliteGCD.m */,
 			);
 			name = LCCSqliteManager;
 			sourceTree = "<group>";

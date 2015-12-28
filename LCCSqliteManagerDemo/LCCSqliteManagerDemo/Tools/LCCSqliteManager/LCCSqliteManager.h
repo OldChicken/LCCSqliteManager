@@ -88,7 +88,7 @@
  
  * @ 1.1版本中已删除该方法
  */
-- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pkey;
+//- (BOOL)createSheetWithName:(NSString *)pName attributes:(NSArray *)pAttributes primaryKey:(NSString *)pkey;
 
 
 
@@ -124,10 +124,11 @@
 - (BOOL)deleateSheetWithName:(NSString *)pName;
 
 
+
 /**
  * # 获取表的字段
  
- * @你需要传入表名,返回一个数组
+ * @你需要传入表名,返回一个存放字段的数组
  */
 - (NSArray *)getSheetAttributesWithSheet:(NSString *)pName;
 
@@ -173,13 +174,46 @@
 
 
 
-//表拷贝
+/**
+ * # 表拷贝
+ 
+ * @
+ */
+- (void)copySheetWithSheet:(NSString *)sheetName;
+
 
 
 /**
- * # 表拷贝相关
+ * # 增加表的字段
+ 
+ * @
  */
+- (void)addColumnToSheet:(NSString *)sheetName withAttribute:(NSString *)attribute;
 
+
+/**
+ * # 修改表的字段
+ 
+ * @
+ */
+- (void)changeColumnToSheet:(NSString *)sheetName newAttribute:(NSString *)newAttribute oldAttribute:(NSString *)oldAttribute;
+
+
+
+/**
+ * # 建立索引
+ 
+ * @
+ */
+- (void)createIndexToSheet:(NSString *)sheetName withIndex:(NSArray *)index;
+
+
+/**
+ * # 多表联查
+ 
+ * @
+ */
+- (void)searchWithSheets:(NSArray *)sheetS where:(NSString *)condition;
 
 
 

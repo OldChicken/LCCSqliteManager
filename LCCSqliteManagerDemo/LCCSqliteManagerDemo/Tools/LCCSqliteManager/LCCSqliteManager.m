@@ -443,7 +443,96 @@
     
 }
 
+- (void)copySheetWithSheet:(NSString *)sheetName{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
 
+- (void)addColumnToSheet:(NSString *)sheetName withAttribute:(NSString *)attribute{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+- (void)changeColumnToSheet:(NSString *)sheetName newAttribute:(NSString *)newAttribute oldAttribute:(NSString *)oldAttribute{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+- (void)searchWithSheets:(NSArray *)sheetS where:(NSString *)condition{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
 #pragma - mark 数据增删改查
 
 

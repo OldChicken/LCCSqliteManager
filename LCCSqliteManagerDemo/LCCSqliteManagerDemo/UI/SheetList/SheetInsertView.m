@@ -105,8 +105,12 @@
         [_attributes addObject:pCell.textFiled.text];
     }
     //创建新表
-    BOOL result =  [_manager createSheetWithName:_sheetTitle attributes:_attributes primaryKey:nil];
-    
+//    BOOL result =  [_manager createSheetWithName:_sheetTitle attributes:_attributes primaryKey:nil];
+    BOOL result =  [_manager createSheetWithSheetHandler:^(LCCSqliteSheetHandler *sheet) {
+        sheet.sheetName = _sheetTitle;
+        sheet.sheetField = _attributes;
+    }];
+
     if (result == YES) {
         
         [self _clear];
