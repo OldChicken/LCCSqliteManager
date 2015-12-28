@@ -15,8 +15,8 @@ github地址:https://github.com/OldChicken/LCCSqliteManager
 
 2.基本方法
 
-LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
-[manager openSqliteFile:@"yourSqliteFileName"];
+    LCCSqliteManager *manager = [LCCSqliteManager shareInstance];  
+    [manager openSqliteFile:@"yourSqliteFileName"];
 
 在你的项目中执行这两句代码，你旧可以进行数据库的管理了。
 
