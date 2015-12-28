@@ -19,7 +19,7 @@ github地址:https://github.com/OldChicken/LCCSqliteManager
 LCCSqliteManager *manager = [LCCSqliteManager shareInstance];  
 [manager openSqliteFile:@"yourSqliteFileName"];
 ```
-
+<br><br>
 
 接下来调用相关方法进行数据库管理<br>
 >* 建表
