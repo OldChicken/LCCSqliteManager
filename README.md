@@ -20,14 +20,25 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
 [manager openSqliteFile:@"yourSqliteFileName"];
 ```
 
-接下来调用相关方法进行数据库管理<br>
-* 建表
+
+>接下来调用相关方法进行数据库管理<br>
+>>建表
 ```Objective-C
 [_manager createSheetWithSheetHandler:^(LCCSqliteSheetHandler *sheet) {
     sheet.sheetName = @"Table1";
     sheet.sheetField = @[@"column1",@"column2",@"column3",@"column4"];
     }];
 ```
-上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看createSheetWithSheetHandler方法。
+>>>上述代码建立了一张名为Table1，且含有四个字段的表。block中你可以进行这张表的相关设置，如果你需要建立一张带主键或者外键的表，你可以查看LCCSqliteSheetHandler类的头文件，了解如何设置一张完整的表。
+
+>>增
+
+>>删
+
+>>改
+
+>>查
+
+
 
 
