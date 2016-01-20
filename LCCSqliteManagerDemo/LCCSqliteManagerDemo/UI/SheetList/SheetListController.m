@@ -13,7 +13,9 @@
 #import "DataListController.h"
 #import "LccButton.h"
 #import "SheetInsertView.h"
-@interface SheetListController ()<UITableViewDelegate,UITableViewDataSource,SheetInsertViewDelegate>
+#import "SWTableViewCell.h"
+
+@interface SheetListController ()<UITableViewDelegate,UITableViewDataSource,SheetInsertViewDelegate,SWTableViewCellDelegate>
 
 {
     //新建表时需要传入的字段数
@@ -155,19 +157,46 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return self.sheetListArray.count;
+
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"sheetCell";
     
+    SWTableViewCell *cell = (SWTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sheetCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sheetCell"];
+        cell = [[SWTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell.leftUtilityButtons = [self leftButtons];
+
+        cell.delegate = self;
     }
-    cell.textLabel.text = _sheetListArray[indexPath.row];
-    return cell;
     
+
+        cell.textLabel.text = _sheetListArray[indexPath.row];
+        return cell;
+
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sheetCell"];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sheetCell"];
+//    }
+//    cell.textLabel.text = _sheetListArray[indexPath.row];
+//    return cell;
+    
+}
+
+
+- (NSArray *)leftButtons
+{
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                               title:@"Edit"];
+
+    return leftUtilityButtons;
 }
 
 
@@ -218,12 +247,14 @@
 
 //新建成功
 -(void)insertSuccess{
+    
     //更新表视图
     _sheetListArray = [_manager getAllSheetNames];
     [self.tableView reloadData];
     UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"提示"
-                                                                   message:@"新建成功"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                       message:@"新建成功"
+                                                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *cannleAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
     [alter addAction:cannleAction];
     [self presentViewController:alter animated:YES completion:nil];
@@ -233,8 +264,9 @@
 -(void)insertError{
     
     UIAlertController *alter = [UIAlertController alertControllerWithTitle:@"提示"
-                                                                   message:@"创建失败，请检查"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                       message:@"创建失败，请检查"
+                                                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *cannleAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
     [alter addAction:cannleAction];
     [self presentViewController:alter animated:YES completion:nil];

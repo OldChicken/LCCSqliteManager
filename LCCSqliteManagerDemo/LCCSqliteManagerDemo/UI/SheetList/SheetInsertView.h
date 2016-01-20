@@ -6,8 +6,9 @@
 //  Copyright © 2015年 LccLcc. All rights reserved.
 //
 
-#import "DataInsertView.h"
+//#import "DataInsertView.h"
 
+#import <UIKit/UIKit.h>
 
 @protocol SheetInsertViewDelegate <NSObject>
 

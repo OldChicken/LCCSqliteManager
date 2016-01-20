@@ -13,20 +13,16 @@ typedef NS_ENUM(NSInteger, LCCSheetReferencesType) {
     
     
     /*
-     . cascade方式
+     cascade方式
      在父表上update/delete记录时，同步update/delete掉子表的匹配记录
-     
-     . No action方式
+     No action方式
      如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作
-     
-     . Set default方式
+     Set default方式
      父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别
      */
-    
-    LCCSqliteReferencesKeyTypeDefault = 0,  //父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识
-    LCCSqliteReferencesKeyTypeCasCade = 1,  //在父表上update/delete记录时,同步update/delete掉子表的匹配记录
-    LCCSqliteReferencesKeyTypeNoAction = 2,  //如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作
-    
+    LCCSqliteReferencesKeyTypeDefault = 0,
+    LCCSqliteReferencesKeyTypeCasCade = 1,
+    LCCSqliteReferencesKeyTypeNoAction = 2,
 };
 
 typedef NS_ENUM(NSInteger, LCCSheetType) {

@@ -21,14 +21,19 @@
 		E214A4011C23989B00A4EBE1 /* DataInsertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3F81C23989B00A4EBE1 /* DataInsertView.m */; };
 		E214A4021C23989B00A4EBE1 /* DataListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3FA1C23989B00A4EBE1 /* DataListController.m */; };
 		E214A4031C23989B00A4EBE1 /* DataUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3FC1C23989B00A4EBE1 /* DataUpdateView.m */; };
-		E214A4041C23989B00A4EBE1 /* LccCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A3FE1C23989B00A4EBE1 /* LccCell.m */; };
 		E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A4001C23989B00A4EBE1 /* LccDataCell.m */; };
 		E214A40C1C23990D00A4EBE1 /* LCCSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */; };
 		E214A42F1C252D4000A4EBE1 /* btn_cannel.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42C1C252D4000A4EBE1 /* btn_cannel.png */; };
 		E214A4301C252D4000A4EBE1 /* btn_save.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42D1C252D4000A4EBE1 /* btn_save.png */; };
 		E214A4311C252D4000A4EBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E214A42E1C252D4000A4EBE1 /* icon.png */; };
+		E22D903B1C4F83CF004592D6 /* LccCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E22D903A1C4F83CF004592D6 /* LccCell.m */; };
 		E29679081C2D406A00866197 /* LCCSqliteSheetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */; };
-		E296790B1C2D40A200866197 /* LCCSqliteGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = E296790A1C2D40A200866197 /* LCCSqliteGCD.m */; };
+		E2A17D8E1C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D831C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.m */; };
+		E2A17D8F1C3B6375004AA6CC /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D851C3B6375004AA6CC /* SWCellScrollView.m */; };
+		E2A17D901C3B6375004AA6CC /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D871C3B6375004AA6CC /* SWLongPressGestureRecognizer.m */; };
+		E2A17D911C3B6375004AA6CC /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D891C3B6375004AA6CC /* SWTableViewCell.m */; };
+		E2A17D921C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D8B1C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.m */; };
+		E2A17D931C3B6375004AA6CC /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A17D8D1C3B6375004AA6CC /* SWUtilityButtonView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +81,6 @@
 		E214A3FA1C23989B00A4EBE1 /* DataListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataListController.m; path = UI/DataList/DataListController.m; sourceTree = "<group>"; };
 		E214A3FB1C23989B00A4EBE1 /* DataUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataUpdateView.h; path = UI/DataList/DataUpdateView.h; sourceTree = "<group>"; };
 		E214A3FC1C23989B00A4EBE1 /* DataUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataUpdateView.m; path = UI/DataList/DataUpdateView.m; sourceTree = "<group>"; };
-		E214A3FD1C23989B00A4EBE1 /* LccCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LccCell.h; path = UI/DataList/LccCell.h; sourceTree = "<group>"; };
-		E214A3FE1C23989B00A4EBE1 /* LccCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LccCell.m; path = UI/DataList/LccCell.m; sourceTree = "<group>"; };
 		E214A3FF1C23989B00A4EBE1 /* LccDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LccDataCell.h; path = UI/DataList/LccDataCell.h; sourceTree = "<group>"; };
 		E214A4001C23989B00A4EBE1 /* LccDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LccDataCell.m; path = UI/DataList/LccDataCell.m; sourceTree = "<group>"; };
 		E214A40A1C23990D00A4EBE1 /* LCCSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteManager.h; path = Tools/LCCSqliteManager/LCCSqliteManager.h; sourceTree = "<group>"; };
@@ -86,10 +89,22 @@
 		E214A42C1C252D4000A4EBE1 /* btn_cannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_cannel.png; path = Sourse/Common/btn_cannel.png; sourceTree = "<group>"; };
 		E214A42D1C252D4000A4EBE1 /* btn_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_save.png; path = Sourse/Common/btn_save.png; sourceTree = "<group>"; };
 		E214A42E1C252D4000A4EBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Sourse/Common/icon.png; sourceTree = "<group>"; };
+		E22D90391C4F83CF004592D6 /* LccCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LccCell.h; path = UI/SheetList/LccCell.h; sourceTree = "<group>"; };
+		E22D903A1C4F83CF004592D6 /* LccCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LccCell.m; path = UI/SheetList/LccCell.m; sourceTree = "<group>"; };
 		E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteSheetHandler.h; path = Tools/LCCSqliteManager/LCCSqliteSheetHandler.h; sourceTree = "<group>"; };
 		E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteSheetHandler.m; path = Tools/LCCSqliteManager/LCCSqliteSheetHandler.m; sourceTree = "<group>"; };
-		E29679091C2D40A200866197 /* LCCSqliteGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LCCSqliteGCD.h; path = Tools/LCCSqliteManager/LCCSqliteGCD.h; sourceTree = "<group>"; };
-		E296790A1C2D40A200866197 /* LCCSqliteGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LCCSqliteGCD.m; path = Tools/LCCSqliteManager/LCCSqliteGCD.m; sourceTree = "<group>"; };
+		E2A17D821C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		E2A17D831C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		E2A17D841C3B6375004AA6CC /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		E2A17D851C3B6375004AA6CC /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		E2A17D861C3B6375004AA6CC /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		E2A17D871C3B6375004AA6CC /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		E2A17D881C3B6375004AA6CC /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		E2A17D891C3B6375004AA6CC /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		E2A17D8A1C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		E2A17D8B1C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		E2A17D8C1C3B6375004AA6CC /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		E2A17D8D1C3B6375004AA6CC /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +203,6 @@
 				E214A40B1C23990D00A4EBE1 /* LCCSqliteManager.m */,
 				E29679061C2D406A00866197 /* LCCSqliteSheetHandler.h */,
 				E29679071C2D406A00866197 /* LCCSqliteSheetHandler.m */,
-				E29679091C2D40A200866197 /* LCCSqliteGCD.h */,
-				E296790A1C2D40A200866197 /* LCCSqliteGCD.m */,
 			);
 			name = LCCSqliteManager;
 			sourceTree = "<group>";
@@ -197,6 +210,7 @@
 		E214A3C01C23938F00A4EBE1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E2A17D811C3B6345004AA6CC /* SWTableViewCell */,
 				E214A40D1C239ED100A4EBE1 /* Define.h */,
 				E214A3EA1C2396A400A4EBE1 /* libsqlite3.0.tbd */,
 				E214A3BF1C23937400A4EBE1 /* LCCSqliteManager */,
@@ -279,10 +293,29 @@
 		E214A40E1C23B35B00A4EBE1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E214A3FD1C23989B00A4EBE1 /* LccCell.h */,
-				E214A3FE1C23989B00A4EBE1 /* LccCell.m */,
+				E22D90391C4F83CF004592D6 /* LccCell.h */,
+				E22D903A1C4F83CF004592D6 /* LccCell.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		E2A17D811C3B6345004AA6CC /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E2A17D821C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.h */,
+				E2A17D831C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.m */,
+				E2A17D841C3B6375004AA6CC /* SWCellScrollView.h */,
+				E2A17D851C3B6375004AA6CC /* SWCellScrollView.m */,
+				E2A17D861C3B6375004AA6CC /* SWLongPressGestureRecognizer.h */,
+				E2A17D871C3B6375004AA6CC /* SWLongPressGestureRecognizer.m */,
+				E2A17D881C3B6375004AA6CC /* SWTableViewCell.h */,
+				E2A17D891C3B6375004AA6CC /* SWTableViewCell.m */,
+				E2A17D8A1C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.h */,
+				E2A17D8B1C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.m */,
+				E2A17D8C1C3B6375004AA6CC /* SWUtilityButtonView.h */,
+				E2A17D8D1C3B6375004AA6CC /* SWUtilityButtonView.m */,
+			);
+			name = SWTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,16 +456,21 @@
 			files = (
 				E214A3E91C23966700A4EBE1 /* AppDelegate.m in Sources */,
 				E214A4051C23989B00A4EBE1 /* LccDataCell.m in Sources */,
-				E296790B1C2D40A200866197 /* LCCSqliteGCD.m in Sources */,
 				E214A4021C23989B00A4EBE1 /* DataListController.m in Sources */,
 				E214A4011C23989B00A4EBE1 /* DataInsertView.m in Sources */,
 				E214A3F41C23988000A4EBE1 /* LccButton.m in Sources */,
+				E2A17D8F1C3B6375004AA6CC /* SWCellScrollView.m in Sources */,
 				E214A40C1C23990D00A4EBE1 /* LCCSqliteManager.m in Sources */,
+				E2A17D8E1C3B6375004AA6CC /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				E2A17D901C3B6375004AA6CC /* SWLongPressGestureRecognizer.m in Sources */,
+				E2A17D911C3B6375004AA6CC /* SWTableViewCell.m in Sources */,
 				E214A3F61C23988000A4EBE1 /* SheetListController.m in Sources */,
 				E29679081C2D406A00866197 /* LCCSqliteSheetHandler.m in Sources */,
-				E214A4041C23989B00A4EBE1 /* LccCell.m in Sources */,
+				E22D903B1C4F83CF004592D6 /* LccCell.m in Sources */,
+				E2A17D931C3B6375004AA6CC /* SWUtilityButtonView.m in Sources */,
 				E214A4031C23989B00A4EBE1 /* DataUpdateView.m in Sources */,
 				E214A38E1C23931300A4EBE1 /* main.m in Sources */,
+				E2A17D921C3B6375004AA6CC /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				E214A3F51C23988000A4EBE1 /* SheetInsertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
