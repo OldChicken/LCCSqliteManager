@@ -53,8 +53,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     NSArray *dates = [manager getSheetDataWithSheet:@“Table1”]
     ```
-    上述代码返回表Table1的所有数据。<br><br><br>,你需要清楚的事，数组中存放的是所有数据，数组的每一个元素代表了一条数据，且是以字典的格式存放的。
-    
+    上述代码返回表Table1的所有数据，你需要清楚的事，数组中存放的是所有数据，数组的每一个元素代表了一条数据，且是以字典的格式存放的。<br><br><br>
     
 
 >* 增
