@@ -53,7 +53,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     NSArray *dates = [manager getSheetDataWithSheet:@“Table1”]
     ```
-    上述代码返回表Table1的所有数据。<br><br><br>
+    上述代码返回表Table1的所有数据。<br><br><br>,你需要清楚的事，数组中存放的是所有数据，数组的每一个元素代表了一条数据，且是以字典的格式存放的。
     
     
 
@@ -70,14 +70,14 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
     ```Objective-C
     [manager deleateDataFromSheet:@“Table1” where:@"  \"column1\"=\'1\'  ";
     ```
-    删除表Table1中，字段"column1"为'data1'的那行数据。where后面跟的字符串是删除条件，你可以输入精确条件、比较条件、模糊查找条件、组合条件等。注意，字段用“”辨识，数据用‘’辨识。具体查找条件在deleateDataFromSheet的注释中有详细介绍。<br><br><br>
+    删除表Table1中，字段"column1"＝'1'的那行数据。where后面跟的字符串是删除条件，你可以输入精确条件、比较条件、模糊查找条件、组合条件等。注意，字段用“”辨识，数据用‘’辨识。具体查找条件在deleateDataFromSheet的注释中有详细介绍。<br><br><br>
 
 
 
 
 >* 改
     ```Objective-C
-    [manager updateDataToSheet:@"Table1" withData:@[@"a","b",@"c",@"d"] where:@"  \"column1\"=\'1\' “ ;
+    [manager updateDataToSheet:@"Table1" withData:@[@"a","b",@"c",@"d"] where:@"  \"column1\"=\'1\' " ;
     ```
     将表Table1中符合”column“＝‘1’的所有数据更新。<br><br><br>
 
@@ -86,13 +86,13 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
 
 >* 查
     ```Objective-C
-    NSArray *result = [manager searchDataFromSheet:@"Table1"  where:@"  \"column1\"=\'1\' “ ;
+    NSArray *result = [manager searchDataFromSheet:@"Table1"  where:@"  \"column1\"=\'1\' " ;
     ```
     得到表Table1中 "column1"='1' 的所有数据。<br><br><br>
 
 
->* 说明:这里，查找条件中的 \"column1\"=\'1\',仅仅是用于sqlite中区分字段和字符串的作用。希望不要与NSString中的“”搞混
-，你只需要将整个OC字符串@"  \"column1\"=\'1\' “ 作为查找条件传入即可。<br><br><br>
+>* 说明:查找条件 \"column1\"=\'1\'中的引号仅仅是用于sqlite中区分字段和字符串数据的作用。希望不要与NSString中的“”搞混
+，你只需要将整个OC字符串@"  \"column1\"=\'1\' " 作为查找条件传入即可。<br><br><br>
 
 
 
@@ -100,11 +100,12 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
 
 
 # 注意事项
-* **所有数据都是以字符串形式存储在表中**，因此，当你从表中检索到数据时，你需要自己进行类型转换。这就导致了查找条件中你进行数值时会发生一些问题，比较例如“年龄”>'8'时，字符串‘10’是小于‘8’的，你必须存入‘08’而非‘8’，才能得到正确的检索结果。也正是因为如此，有关数据的任何计算，我都没有提供方法，你可以将符合条件的数据提取到你的项目中条件转换后再进行计算。<br>
+* **所有数据都是以字符串形式存储在表中**，因此，当你从表中检索到数据时，你需要自己进行类型转换。这就导致了查找条件中你进行数值时会发生一些问题，比较例如“年龄”>'8'时，字符串‘10’是小于‘8’的，你必须存入‘08’而非‘8’，才能得到正确的检索结果。也正是因为如此，有关数据的一些计算方式我都没有提供方法，你可以将符合条件的数据提取到你的项目中条件转换后再进行计算。<br>
 
 * **设置主键防止程序和数据库出现数据不同步而导致程序崩溃的现象**，在使用TableView的deleteRowsAtIndexPaths方法时，很容易出现你删除了一个cell，数据库删除了多个数据的情况导致崩溃。解决这个问题最好的方法是给你的数据表增加一个主键。<br>
 
-* **Demo只展示了最简单的动态建表**，如果你需要建立复杂的表，我建议你下载SqliteManager工具，该工具可以打开mac上的数据库文件，你可以直接调用函数建表，用SliteManager进行检测。<br>
+* **Demo只展示了最简单的动态建表**，如果你需要建立复杂的表，我建议你下载SqliteManager工具，该工具可以打开mac上的数据库文件，你可以直接调用函数建表，用SqliteManager进行检测。<br>
+* 
 * **因为Demo不能完整的展现数据库的管理**，如果有什么bug或者建议，欢迎提出。邮箱地址**505349486@qq.com**,我会一直维护。
 
 
