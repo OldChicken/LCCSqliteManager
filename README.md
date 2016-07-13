@@ -104,7 +104,7 @@ LCCSqliteManager *manager = [LCCSqliteManager shareInstance];
 * **设置主键防止程序和数据库出现数据不同步而导致程序崩溃的现象**，在使用TableView的deleteRowsAtIndexPaths方法时，很容易出现你删除了一个cell，数据库删除了多个数据的情况导致崩溃。解决这个问题最好的方法是给你的数据表增加一个主键。<br>
 
 * **Demo只展示了最简单的动态建表**，如果你需要建立复杂的表，我建议你下载SqliteManager工具，该工具可以打开mac上的数据库文件，你可以直接调用函数建表，用SqliteManager进行检测。<br>
-* 
+
 * **因为Demo不能完整的展现数据库的管理**，如果有什么bug或者建议，欢迎提出。邮箱地址**505349486@qq.com**,我会一直维护。
 
 
